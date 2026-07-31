@@ -1,0 +1,38 @@
+# --- Unityが自動生成する一時・キャッシュフォルダ ---
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+
+# --- エディタ・IDE関連（Visual Studio / VS Code / Riderなど） ---
+.vs/
+.idea/
+.vscode/
+/*.csproj
+/*.unityproj
+/*.sln
+/*.suo
+/*.tmp
+/*.user
+/*.userprefs
+/*.pidb
+/*.booproj
+/*.svd
+/*.pdb
+/*.opendb
+/*.VC.db
+
+# --- OSが生成する不要ファイル ---
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+
+# --- ビルド生成物 ---
+*.apk
+*.aab
+*.unitypackage
