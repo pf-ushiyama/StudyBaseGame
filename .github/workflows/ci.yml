@@ -1,0 +1,17 @@
+name: GitHub Actionsの初稼働
+
+on:
+  push:
+    branches: [ "main", "master" ] # お使いのブランチ名に合わせてください
+
+jobs:
+  first-check:
+    runs-on: ubuntu-latest # クラウド上のLinuxマシンで実行
+    steps:
+      - name: コードをダウンロード（チェックアウト）
+        uses: actions/checkout@v4
+
+      - name: 動作確認メッセージを出力
+        run: |
+          echo "Unityプロジェクトの自動取得に成功しました！"
+          ls -la
