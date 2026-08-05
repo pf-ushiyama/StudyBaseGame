@@ -1,0 +1,43 @@
+name: Unity自動ビルド
+
+on:
+  push:
+    branches: [ "develop", "master" ] # develop か master にPushされたら動く
+  workflow_dispatch: # 手動実行ボタンも用意
+
+jobs:
+  build:
+    name: Windows向けビルド実行
+    runs-on: ubuntu-latest
+    steps:
+      # 1. コードの取得
+      - name: コードをダウンロード
+        uses: actions/checkout@v4
+        with:
+          lfs: true # 大容量ファイル（LFS）にも対応
+
+      # 2. ビルド時間を短縮するためのキャッシュ設定
+      - name: Libraryフォルダのキャッシュ
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
+
+      # 3. GameCIを使ってUnityビルドを実行
+      - name: Unityビルドの実行
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: StandaloneWindows64 # Windows用にビルド
+
+      # 4. 出来上がったゲームをGitHub上に保存
+      - name: ビルド成果物のアップロード
+        uses: actions/upload-artifact@v4
+        with:
+          name: StandaloneWindows64-Game
+          path: build/StandaloneWindows64
