@@ -2,7 +2,7 @@ name: GitHub Actionsの初稼働
 
 on:
   push:
-    branches: [ "main", "master" ] # お使いのブランチ名に合わせてください
+    branches: [ "develop", "master" ] # お使いのブランチ名に合わせてください
 
 jobs:
   first-check:
