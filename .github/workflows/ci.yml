@@ -1,8 +1,8 @@
-name: GitHub Actionsの初稼働
+name: GitHub Actionsの初稼働 # ワークフロー全体の名前
 
 on:
   push:
-    branches: [ "develop", "master" ] # お使いのブランチ名に合わせてください
+    branches: [ "develop", "master" ] 
 
 jobs:
   first-check:
