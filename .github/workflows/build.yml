@@ -1,8 +1,8 @@
 name: Unity自動ビルド
 
 on:
-  push:
-    branches: [ "develop", "master" ] # develop か master にPushされたら動く
+  # push:
+  #   branches: [ "develop", "master" ] # develop か master にPushされたら動く
   workflow_dispatch: # 手動実行ボタンも用意
 
 jobs:
